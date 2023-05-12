@@ -13,10 +13,25 @@ const Form = () => {
     useFormik({
       initialValues: initialValues,
       validationSchema: signUpSchema,
-      onSubmit: (values) => {
-        
-      },
+      onSubmit: (values) => {},
     });
+
+  const popup = () => {
+    if (
+      values.name &&
+      values.email &&
+      values.password &&
+      values.confirm_password
+    ) {
+      confirm(
+        `Welcome ${values.name.charAt(0).toUpperCase()}${values.name.slice(
+          1
+        )}! You are registered successfully.`
+      );
+    }else{
+        confirm("please fill all the fields")
+    }
+  };
   return (
     <>
       <form action="" className="w-96 px-5" onSubmit={handleSubmit}>
@@ -102,7 +117,7 @@ const Form = () => {
           <button
             type="submit"
             className="bg-black text-white px-5 py-1 rounded cursor-pointer"
-            onClick={()=> confirm(`${values.name.charAt(0).toUpperCase()}${values.name.slice(1)}! You are registered successfully.`)}
+            onClick={() => popup()}
           >
             Register
           </button>
