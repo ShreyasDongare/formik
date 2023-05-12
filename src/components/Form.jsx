@@ -14,10 +14,9 @@ const Form = () => {
       initialValues: initialValues,
       validationSchema: signUpSchema,
       onSubmit: (values) => {
-        console.log(values);
+        
       },
     });
-  console.log(errors);
   return (
     <>
       <form action="" className="w-96 px-5" onSubmit={handleSubmit}>
